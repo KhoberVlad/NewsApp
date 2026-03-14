@@ -1,0 +1,6 @@
+<div *ngIf="articles?.length">
+  <app-card 
+    *ngFor="let article of articles; trackBy: trackByArticle" 
+    [article]="article">
+  </app-card>
+</div>
