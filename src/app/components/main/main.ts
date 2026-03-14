@@ -4,12 +4,12 @@ import { CommonModule } from '@angular/common';
 import { Card } from '../card/card';
 
 @Component({
-  selector: 'app-new-list',
+  selector: 'app-main',
   standalone: true,
   imports: [CommonModule, Card],
-  templateUrl: './new-list.html',
+  templateUrl: './main.html',
 })
-export class NewList implements OnInit {
+export class Main implements OnInit {
   articles: any[] = [];
 
   constructor(private http: HttpClient) {}
@@ -25,7 +25,6 @@ export class NewList implements OnInit {
       'https://newsapi.org/v2/everything?q=world&sortBy=popularity&apiKey=3bf006d9547742b791df11f63f810b2f'
     ).subscribe(res => {
       this.articles = [...res.articles].slice(0, 10);
-       // ⬅️ іммутабельне присвоєння
         console.log('Loaded popular news:', this.articles);
     });
   }
@@ -37,12 +36,11 @@ export class NewList implements OnInit {
       `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=3bf006d9547742b791df11f63f810b2f`
     ).subscribe(res => {
       this.articles = [...res.articles].slice(0, 10);
-       // ⬅️ іммутабельне присвоєння
        console.log(`Loaded ${category} news:`, this.articles);
     });
   }
 
   trackByArticle(index: number, article: any) {
-    return article.url; // унікальний ключ
+    return article.url; 
   }
 }
