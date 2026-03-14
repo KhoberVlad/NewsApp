@@ -1,6 +1,7 @@
-import { Component, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterLink, RouterLinkActive } from "@angular/router";
+import { RouterLink, RouterLinkActive } from '@angular/router';
+import { NewsService } from '../../services/news';
 
 @Component({
   selector: 'app-header',
@@ -11,14 +12,14 @@ import { RouterLink, RouterLinkActive } from "@angular/router";
 export class Header {
   searchQuery: string = '';
 
-  @Output() search = new EventEmitter<string>();
-
-  constructor(private cdr: ChangeDetectorRef) {}
+  constructor(private newsService: NewsService) {}
 
   onSearch() {
-    this.search.emit(this.searchQuery);
+    this.newsService.setCategory(this.searchQuery);
   }
-  onCategory(category: string) {  
-    this.search.emit(category);
+
+  onCategory(category: string) {
+    this.newsService.setCategory(category);
+    console.log('Category selected:', category);
   }
 }

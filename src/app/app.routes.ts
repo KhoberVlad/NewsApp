@@ -4,7 +4,8 @@ import { Contact } from './components/contact/contact';
 import { Main } from './components/main/main';
 
 export const routes: Routes = [
-  { path: '', component: Main },
+  { path: '',  redirectTo: 'main', pathMatch: 'full' },
+  { path: 'main', component: Main },
   { path: 'about-us', component: AboutUs },
   { path: 'contact', component: Contact }
 ];

@@ -1,17 +1,19 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { RouterLink, RouterLinkActive } from "@angular/router";
-import { RouterModule } from '@angular/router';
+import { Component } from '@angular/core';
+import { RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
+import { NewsService } from '../../services/news';
 
 @Component({
   selector: 'app-footer',
-  imports: [RouterLink, RouterLinkActive , RouterModule],
+  imports: [RouterLink, RouterLinkActive, RouterModule],
   templateUrl: './footer.html',
   styleUrl: './footer.css',
 })
 export class Footer {
-  @Output() search = new EventEmitter<string>();
+
+  constructor(private newsService: NewsService) {}
 
   onCategory(category: string) {
-    this.search.emit(category);
+    this.newsService.setCategory(category);
+    console.log('Footer category selected:', category);
   }
 }

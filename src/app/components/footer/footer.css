@@ -56,3 +56,12 @@
   color: #999;
   font-size: 0.8rem;
 }
+.footer-logo {
+  text-decoration: none;
+  color: inherit;
+}
+
+.footer-logo:hover h3 {
+  color: #198754;
+  transition: color 0.2s;
+}
