@@ -1,8 +1,10 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { RouterLink, RouterLinkActive } from "@angular/router";
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-footer',
-  imports: [],
+  imports: [RouterLink, RouterLinkActive , RouterModule],
   templateUrl: './footer.html',
   styleUrl: './footer.css',
 })

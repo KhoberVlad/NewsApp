@@ -1,0 +1,31 @@
+.container h1 {
+  font-weight: 700;
+  color: #1a1a2e;
+  font-size: 36px;
+}
+
+.card {
+  border-radius: 12px !important;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1) !important;
+}
+
+.card-title {
+  font-weight: 600;
+  color: #1a1a2e;
+  margin-bottom: 12px;
+}
+
+.card-text {
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+.card h2 {
+  font-size: 42px;
+  font-weight: 700;
+}
