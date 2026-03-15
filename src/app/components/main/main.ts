@@ -17,7 +17,6 @@ export class Main implements OnInit {
     private cdr: ChangeDetectorRef,
     private newsService: NewsService
   ) {
-    // спрацьовує автоматично при кожній зміні category
     effect(() => {
       const category = this.newsService.category();
       console.log('Category changed:', category);
