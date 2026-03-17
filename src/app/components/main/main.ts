@@ -3,11 +3,12 @@ import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { Card } from '../card/card';
 import { NewsService } from '../../services/news';
+import { IfValidImage } from '../../directives/if-valid-image';
 
 @Component({
   selector: 'app-main',
   standalone: true,
-  imports: [CommonModule, Card],
+  imports: [CommonModule, Card, IfValidImage],
   templateUrl: './main.html',
 })
 export class Main implements OnInit {
