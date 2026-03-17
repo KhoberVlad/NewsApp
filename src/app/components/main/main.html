@@ -1,7 +1,6 @@
 <div *ngIf="articles?.length">
   <ng-container *ngFor="let article of articles; trackBy: trackByArticle">
     <app-card
-      *appIfValidImage="article.urlToImage"
       [article]="article">
     </app-card>
   </ng-container>

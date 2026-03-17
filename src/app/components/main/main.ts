@@ -3,12 +3,11 @@ import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { Card } from '../card/card';
 import { NewsService } from '../../services/news';
-import { IfValidImage } from '../../directives/if-valid-image';
 
 @Component({
   selector: 'app-main',
   standalone: true,
-  imports: [CommonModule, Card, IfValidImage],
+  imports: [CommonModule, Card],
   templateUrl: './main.html',
 })
 export class Main implements OnInit {
@@ -33,7 +32,7 @@ export class Main implements OnInit {
 loadPopularNews() {
   this.http.get<any>(`${PROXY}/everything?q=world`)
     .subscribe(res => {
-      this.articles = [...res.articles].slice(0, 10);
+      this.articles = [...res.articles];
       console.log('Loaded popular news:', this.articles);
       this.cdr.detectChanges();
     });
@@ -43,7 +42,7 @@ loadCategory(category: string) {
   if (!category) return;
   this.http.get<any>(`${PROXY}/top-headlines?category=${category}`)
     .subscribe(res => {
-      this.articles = [...res.articles].slice(0, 10);
+      this.articles = [...res.articles];
       console.log(`Loaded ${category} news:`, this.articles);
       this.cdr.detectChanges();
     });

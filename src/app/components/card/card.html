@@ -1,3 +1,4 @@
+ <ng-container *appShowIfNew="article?.publishedAt">
  <div appFadeOnHover>
  <div class="card-container" *ngIf="article">
     <div class="img">
@@ -13,3 +14,4 @@
     <div class="link"><a [href]="article?.url" target="_blank" class="card-link">Read more</a></div>
   </div>
  </div>
+ </ng-container>
