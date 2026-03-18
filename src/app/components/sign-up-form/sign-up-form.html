@@ -1,0 +1,58 @@
+<form [formGroup]="SignUp">
+  <label>First Name</label>
+  <input type="text" formControlName="firstName">
+  <label>Last Name</label>
+  <input type="text" formControlName="lastName">
+
+  <div *ngIf="SignUp.get('lastName')?.touched && SignUp.get('lastName')?.invalid">
+    <small *ngIf="SignUp.get('lastName')?.errors?.['required']">
+      Last name is required
+    </small>
+  </div>
+  <label>Email</label>
+  <input type="email" formControlName="email">
+
+  <div *ngIf="SignUp.get('email')?.touched && SignUp.get('email')?.invalid">
+    <small *ngIf="SignUp.get('email')?.errors?.['required']">
+      Email is required
+    </small>
+    <small *ngIf="SignUp.get('email')?.errors?.['email']">
+      Invalid email
+    </small>
+  </div>
+  <div formGroupName="address">
+    <h3>Address</h3>
+
+    <label>Street</label>
+    <input type="text" formControlName="street">
+
+    <div *ngIf="SignUp.get('address.street')?.invalid && (SignUp.get('address.street')?.touched || SignUp.get('address.street')?.dirty)">
+      <small *ngIf="SignUp.get('address.street')?.errors?.['required']">
+        Street is required
+      </small>
+      <small *ngIf="SignUp.get('address.street')?.errors?.['minlength']">
+        Min 5 characters
+      </small>
+    </div>
+
+    <label>City</label>
+    <input type="text" formControlName="city">
+
+    <label>Region</label>
+    <input type="text" formControlName="region">
+  </div>
+  <label>Password</label>
+  <input type="password" formControlName="password">
+
+  <div *ngIf="SignUp.get('password')?.invalid && (SignUp.get('password')?.touched || SignUp.get('password')?.dirty)">
+    <small *ngIf="SignUp.get('password')?.errors?.['required']">
+      Password is required
+    </small>
+    <small *ngIf="SignUp.get('password')?.errors?.['minlength']">
+      Minimum 6 characters
+    </small>
+  </div>
+<button type="submit" [disabled]="SignUp.invalid">
+  Login
+</button>
+</form>

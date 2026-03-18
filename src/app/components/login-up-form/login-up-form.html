@@ -1,0 +1,27 @@
+  <form [formGroup]="LoginUp">
+  <label>Email</label>
+  <input type="email" formControlName="email">
+
+  <div *ngIf="LoginUp.get('email')?.touched && LoginUp.get('email')?.invalid">
+    <small *ngIf="LoginUp.get('email')?.errors?.['required']">
+      Email is required
+    </small>
+    <small *ngIf="LoginUp.get('email')?.errors?.['email']">
+      Invalid email
+    </small>
+  </div>
+  <label>Password</label>
+  <input type="password" formControlName="password">
+
+  <div *ngIf="LoginUp.get('password')?.invalid && (LoginUp.get('password')?.touched || LoginUp.get('password')?.dirty)">
+    <small *ngIf="LoginUp.get('password')?.errors?.['required']">
+      Password is required
+    </small>
+    <small *ngIf="LoginUp.get('password')?.errors?.['minlength']">
+      Minimum 6 characters
+    </small>
+  </div>
+  <button type="submit" [disabled]="LoginUp.invalid">
+  Login
+</button>
+  </form>
